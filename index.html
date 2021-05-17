@@ -28,6 +28,9 @@
         text-align: center;
         color:azure;
       }
+      th{
+        color: azure;
+      }
     </style>
 
 </head>
@@ -55,8 +58,6 @@
   <script>
 
     function iniciaMapa(){
-
-
       var coordenadas = {  lat: 21.152639, lng:  -101.711598 };
 
       var propiedades = {
@@ -67,15 +68,9 @@
 
       map = new google.maps.Map(document.getElementById('map'),propiedades);
 
-
-
-
-
       fetch('municipios.json')
       .then( function(response){
           response.json().then( function(municipios){
-            
-            
 
             var datos = document.getElementById('datos');
 
@@ -95,8 +90,6 @@
             var coordenadasVuelos=[];
 
             municipios.forEach( municipio => {
-
-
               coordenadasVuelos.push(municipio.coordenadas);
 
               var municipioCirculo = new google.maps.Circle({
@@ -120,7 +113,6 @@
 
 
             });
-
             var vuelosTrazo = new google.maps.Polyline({
               path: coordenadasVuelos,
               geodesic:true,
@@ -139,11 +131,7 @@
 
           });
       });
-
-
     }
-
-
   </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
